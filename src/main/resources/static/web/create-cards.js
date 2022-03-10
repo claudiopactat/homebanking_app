@@ -23,7 +23,7 @@ var app = new Vue({
             })
             
             .then(response => 
-                window.location.href = 'http://localhost:8080/web/cards.html',
+                window.location.href = '/web/cards.html',
             )
 
             .catch(error => 

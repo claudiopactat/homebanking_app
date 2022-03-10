@@ -46,7 +46,7 @@ var app = new Vue({
 
     methods: {
         loadData(){
-            axios.get('http://localhost:8080/api/clients/current')
+            axios.get('/api/clients/current')
 
             .then(response => {
                 // verificamos si el usuario que ingreso es admin.. si es asi lo habilitaremos a un tipo de prestamo especial
@@ -65,7 +65,7 @@ var app = new Vue({
 
         
         loadLoans(){
-            axios.get('http://localhost:8080/api/loans')
+            axios.get('/api/loans')
 
             .then(response =>{
                 //guardamos las cuotas de cada tipo de prestamo

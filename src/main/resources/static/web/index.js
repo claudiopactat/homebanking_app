@@ -27,7 +27,7 @@ var app = new Vue({
                     })
                 }
                 setTimeout(() => {
-                    window.location.href = 'http://localhost:8080/web/accounts.html'
+                    window.location.href = '/web/accounts.html'
                 }, 2000);
             })
 

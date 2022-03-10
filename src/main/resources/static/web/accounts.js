@@ -15,7 +15,7 @@ var app = new Vue({
     methods: {
 
         loadData(){
-            axios.get('http://localhost:8080/api/clients/current')
+            axios.get('/api/clients/current')
             
             .then(response => {
                 
@@ -52,15 +52,15 @@ var app = new Vue({
         },
 
         newAccount(tipo){
-            axios.post('http://localhost:8080/api/clients/current/accounts',`accountType=${tipo}`)
+            axios.post('/api/clients/current/accounts',`accountType=${tipo}`)
             
             .then(response =>{
-                window.location.href = 'http://localhost:8080/web/accounts.html'
+                window.location.href = '/web/accounts.html'
             })
         },
 
         deleteAccount(id){
-            axios.patch(`http://localhost:8080/api/clients/current/accounts/delete/${id}`)
+            axios.patch(`/api/clients/current/accounts/delete/${id}`)
 
             .then(response => {
                 Swal.fire({
