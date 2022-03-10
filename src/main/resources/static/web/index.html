@@ -26,7 +26,7 @@
 
         <div class="derechaLogin">
 
-            <form v-show="iniciosesion">
+            <form v-show="iniciosesion" onsubmit="return false">
                 <h1>Iniciar Sesion</h1>
                 <div class="mb-3">
                     <label for="email1" class="form-label">Email:</label>
@@ -44,7 +44,7 @@
                 </div>
             </form>
 
-            <form v-show="registro">
+            <form v-show="registro" onsubmit="return false">
                 <h1>Registrarse</h1>
                 <div class="mb-3">
                     <label for="firstName" class="form-label">Nombre:</label>
