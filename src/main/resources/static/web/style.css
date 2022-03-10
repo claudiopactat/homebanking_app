@@ -1,0 +1,473 @@
+/* HEADER */
+.encabezado{
+    display:flex;
+    padding-top: 1vw;
+    padding-bottom: 0.5vw;
+    border-bottom: 0.25vw solid darkorange ;
+    border-top: 0.25vw solid darkorange ;
+}
+
+.encabezado h1{
+    margin-top: -0.3vw;
+}
+
+/*
+h1, h2{
+    font-size: 2rem;
+}
+*/
+
+footer{
+    padding-top: 0.25vw;
+    border-bottom: 0.25vw solid darkorange ;
+    border-top: 0.25vw solid darkorange ;
+
+    font-size: 1vw;
+}
+
+footer p{
+    margin-bottom: 0vw;
+}
+
+.sb-sidenav-menu-heading{
+    color: whitesmoke;
+}
+
+.cuerpo{
+    display: flex;
+}
+
+.izquierda{
+    width: 15%;
+    padding-left: 1rem;
+    font-size: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    margin-bottom: -1rem;
+
+    border-right: 0.25vw solid darkorange;
+}
+
+.separar{
+    margin-top: 3rem;
+}
+
+.derecha{
+    width: 80%;
+    margin: 1rem auto auto auto;
+}
+
+.contactos{
+    display: flex;
+}
+
+.hashtag{
+    font-size: 1.2vw;
+    margin-left: -0.5vw;
+    margin-top: 1vw;
+}
+
+.glosario{
+    font-size: 0.6vw;
+    text-align: end;
+    margin-bottom: 0vw;
+}
+
+.sangria{
+    text-indent: 2vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+
+.linea{
+    border-top: 1px solid gray;
+    height: 20px;
+    max-width: 1000px;
+    margin: 1rem auto 0rem auto;
+    
+}
+
+
+
+/* REDES SOCIALES */
+.redes{
+    color: orangered;
+}
+.redes:hover{
+    color: orange;
+}
+
+/* FOOTER */
+.linkFooter:hover{
+    color: cyan;
+}
+
+.tituloFooter{
+    color: rgb(41, 109, 109);
+    font-size: 1.3vw;
+    text-decoration: none;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+footer{
+    margin-top: 1rem;
+}
+
+
+
+/* CHECKBOX */
+.filtroTarjetas{
+    font-size: 1.1vw;
+    
+    padding-top: 1.5vw;
+    padding-bottom: 1.5vw;
+    
+    margin-left: -5vw;
+    margin-right: -5vw;
+
+    border-bottom: 0.25vw solid darkorange ;
+}
+
+
+
+
+/* PAGINA INICIO Y REGISTRO */
+.cuerpoLogin{
+    display: flex;
+}
+
+.izquierdaLogin{
+    width: 50%;
+    
+    border-right: 0.25vw solid darkorange;
+    padding-bottom: 21%;
+    background-color: #1f1e1e;
+    background: repeating-linear-gradient(45deg, );
+
+    color: darkorange;
+    text-align: center;
+    padding-top: 15rem;
+}
+
+.derechaLogin{
+    width: 30%;
+    margin: auto;
+
+    flex-direction: column;
+    text-align: center
+}
+
+.lineaIndex{
+    border-top: 0.25rem solid darkorange;
+    width: 15rem;
+    margin: auto;
+    margin-bottom: 2rem;
+}
+
+.buttonIngresar{
+    margin-top: 1rem;
+}
+
+.buttonCambiarFormulario{
+    margin-top: 1rem;
+}
+
+.buttonDisabled{
+    transition: 0.3s;
+}
+
+.buttonDisabled p{
+    display: none;
+    transition: 0.3s;
+}
+
+.buttonDisabled:hover p{
+    transition: 0.3s;   
+    display: inherit;
+    position: absolute;
+    top: 10rem;
+    color: yellow;
+    background: mediumslateblue;
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+}
+
+.formLoans{
+    margin-top: 2rem;
+}
+
+.eliminaTarjeta{
+    margin-top: 13rem;
+}
+
+.imagenContactanos{
+    width: 100%; 
+    height: 30%;
+    margin-top: 2rem;
+}
+
+
+
+
+
+/* tarjeta de credito inicio */
+
+@import url('https://fonts.googleapis.com/css?family=Space+Mono:400,400i,700,700i');
+
+
+.title {
+    margin-bottom: 30px;
+    color: #162969;
+}
+
+
+.card{
+    width: 350px;
+    height: 190px;
+
+    margin-top: 0vw;
+    margin-left: 3vw;
+    margin-bottom: 2vw;
+
+    -webkit-perspective: 600px;
+    -moz-perspective: 600px;
+    perspective:600px;
+}
+
+.card__vacia{
+    box-shadow: 1px 1px #aaa3a3;
+    top: 0;
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    display: inline-block;
+    width: 350px;
+    height: 190px;
+    background-image: url(''), linear-gradient(to right bottom, #aa7c7c, #b1a8ac, #6e5f5f, #857878, #9b929b); /*linear-gradient(to right bottom, #fd8369, #fc7870, #f96e78, #f56581, #ee5d8a)*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px;
+   
+    -webkit-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -moz-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -ms-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -o-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+}
+
+.card__black{
+    box-shadow: 1px 1px #aaa3a3;
+    top: 0;
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    display: inline-block;
+    width: 350px;
+    height: 190px;
+    background-image: url('img/logo2.png'), linear-gradient(to right bottom, #1f1e1e, #383637, #525050, #252424, #252425); /*linear-gradient(to right bottom, #fd8369, #fc7870, #f96e78, #f56581, #ee5d8a)*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px;
+   
+    -webkit-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -moz-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -ms-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -o-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+}
+
+.card__gold{
+    box-shadow: 1px 1px #aaa3a3;
+    top: 0;
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    display: inline-block;
+    width: 350px;
+    height: 190px;
+    background-image: url('img/logo2.png'), linear-gradient(to right bottom, #6c6e1a, #c8ca55, #54571c, #d6e03e, #5e5913); /*linear-gradient(to right bottom, #fd8369, #fc7870, #f96e78, #f56581, #ee5d8a)*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px;
+   
+    -webkit-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -moz-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -ms-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -o-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+}
+
+.card__silver{
+    box-shadow: 1px 1px #aaa3a3;
+    top: 0;
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    display: inline-block;
+    width: 350px;
+    height: 190px;
+    background-image: url('img/logo2.png'), linear-gradient(to right bottom, #979494, #686767, #726062, #585657, #3a373a); /*linear-gradient(to right bottom, #fd8369, #fc7870, #f96e78, #f56581, #ee5d8a)*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px;
+   
+    -webkit-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -moz-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -ms-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -o-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+}
+
+.card__front{
+  padding: 18px;
+-webkit-transform: rotateY(0);
+-moz-transform: rotateY(0);
+}
+
+.card__back {
+  padding: 18px 0;
+-webkit-transform: rotateY(-180deg);
+-moz-transform: rotateY(-180deg);
+}
+
+.card__black-line {
+    margin-top: 5px;
+    height: 38px;
+    background-color: #303030;
+}
+
+.card__logo {
+    height: 16px;
+}
+
+.card__front-logo{
+      position: absolute;
+    top: 18px;
+    right: 18px;
+}
+.card__square {
+    border-radius: 5px;
+    height: 30px;
+}
+
+.card_numer {
+    display: block;
+    width: 100%;
+    word-spacing: 4px;
+    font-size: 25px;
+    font-weight:bold;
+    letter-spacing: 2px;
+    color: rgb(19, 171, 209);
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.card__space-75 {
+    width: 75%;
+    float: left;
+}
+
+.card__space-25 {
+    width: 25%;
+    float: left;
+}
+
+.card__label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 1px;
+}
+
+.card__info {
+    margin-bottom: 0;
+    margin-top: 5px;
+    font-size: 16px;
+    line-height: 18px;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.card__back-content {
+    padding: 15px 15px 0;
+}
+.card__secret--last {
+    color: #303030;
+    text-align: right;
+    margin: 0;
+    font-size: 14px;
+}
+
+.card__secret {
+    padding: 5px 12px;
+    background-color: #fff;
+    position:relative;
+}
+
+.card__secret:before{
+  content:'';
+  position: absolute;
+top: -3px;
+left: -3px;
+height: calc(100% + 6px);
+width: calc(100% - 42px);
+border-radius: 4px;
+  background: repeating-linear-gradient(45deg, #ededed, #ededed 5px, #f9f9f9 5px, #f9f9f9 10px);
+}
+
+.card__back-logo {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+.card__back-square {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+}
+
+.card:hover .card__front {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+
+}
+
+.card:hover .card__back {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+}
+
+
+/* tarjeta de credito fin */
+
+
+
+
+
+
+
+/* LOGIN Y REGISTRO */

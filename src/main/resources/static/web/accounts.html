@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Cuentas</title>
+</head>
+
+<body>
+
+  <div id="app">
+
+    <header class="encabezado d-flex justify-content-evenly text-white-50 bg-dark bg-gradient">
+      <div class="d-flex justify-content-start">
+        <img src="img/logo2.png" alt="" width="65" height="55">
+        <h1> | Online Banking</h1>
+      </div>
+      <div class="d-flex justify-content-end">
+        <h2>Bienvenido: <b> {{client.firstName}} {{client.lastName}}</b></h2>
+      </div>
+      <div>
+        <button type="submit" role="link" onclick="window.location='http://localhost:8080/web/index.html'"
+          @click="signOut()" class="btn btn-danger">Cerrar Sesion</button>
+      </div>
+    </header>
+
+    <div class="cuerpo bg-light bg-gradient">
+
+      <nav class="nav flex-column bg-dark izquierda">
+
+        <div class="sb-sidenav-menu-heading">Principal</div>
+        <a class="nav-link active" href="http://localhost:8080/web/accounts.html" style="color: yellow">Cuentas</a>
+
+        <div class="bg-dark" id="accordionExample">
+          <div class="accordion-item bg-dark" style="border: none;">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button bg-dark" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+                style="color: yellow; margin-left: -0.2vw;">
+                Transacciones
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body" v-for="account in accountActive">
+                <a class="nav-link" href="#" style="color: yellow"
+                  v-bind:href="`account.html?id=${account.id}`">Transacciones cuenta {{account.number}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a class="nav-link active" href="http://localhost:8080/web/cards.html" style="color: yellow;">Tarjetas</a>
+        <a class="nav-link" href="transfers.html" style="color: yellow;">Transferencias</a>
+
+        <div class="sb-sidenav-menu-heading">Secundarios</div>
+        <a class="nav-link" role="button" @click="mantenimiento()">Compras</a>
+        <a class="nav-link" role="button" @click="mantenimiento()">Transferencias a exteriores</a>
+        <a class="nav-link" role="button" @click="mantenimiento()">DEBIN - Debito inmediato</a>
+        <a class="nav-link" role="button" @click="mantenimiento()">Pagos</a>
+        <a class="nav-link" role="button" @click="mantenimiento()">Inversiones</a>
+
+        <div class="sb-sidenav-menu-heading">Complementos</div>
+        <a class="nav-link" role="button" @click="mantenimiento()">Documentos Digitales</a>
+        <a class="nav-link" role="button" @click="mantenimiento()">Chequeras/Boletas</a>
+        <a class="nav-link" role="button" @click="mantenimiento()">Beneficios de la Gente</a>
+        <a class="nav-link" role="button" @click="mantenimiento()">Servicios AFIP</a>
+        <a class="nav-link" role="button" @click="mantenimiento()">Devolucion de IVA</a>
+        <a class="nav-link" role="button" @click="mantenimiento()">Comparacion de comisiones</a>
+
+        <a class="nav-link disabled hashtag" href="#"># Online Banking</a>
+
+        <div class="d-flex flex-row">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="32"
+            height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <rect x="4" y="4" width="16" height="16" rx="4" />
+            <circle cx="12" cy="12" r="3" />
+            <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
+          </svg>
+          <a class="nav-link redes" href="https://msng.link/o/?online.banking=ig">| Online Banking</a>
+        </div>
+
+        <div class="d-flex flex-row">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="32"
+            height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+          </svg>
+          <a class="nav-link redes" href="https://www.twitter.com/Online.Banking">| twitter/Online.Banking</a>
+        </div>
+
+        <div class="d-flex flex-row">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp" width="32"
+            height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+            <path
+              d="M9 10a0.5 .5 0 0 0 1 0v-1a0.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a0.5 .5 0 0 0 0 -1h-1a0.5 .5 0 0 0 0 1" />
+          </svg>
+          <a class="nav-link redes" href="https://wa.me/3425234627?text=Hola%21+Queria+hacer+una+consulta..">| 342 5 234
+            627</a>
+        </div>
+
+      </nav>
+
+      <div class="banner derecha">
+
+        <h2 class="separar">Tus Cuentas:</h2>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Numero de cuenta</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Fecha de creacion</th>
+              <th scope="col">Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="account in accountActive" v-if="account.active == true">
+              <td>{{account.id}}</td>
+              <td>{{account.number}}</td>
+              <td>{{account.accountType}}</td>
+              <td>{{account.status}}</td>
+              <td>{{account.creationDate.substring(0,10)}}</td>
+              <td>{{account.balance}}</td>
+              
+              <td><button type="button" @click="deleteAccount(account.id)" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <line x1="4" y1="7" x2="20" y2="7" />
+                <line x1="10" y1="11" x2="10" y2="17" />
+                <line x1="14" y1="11" x2="14" y2="17" />
+                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+              </svg> Eliminar Cuenta</button></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Button trigger modal -->
+        <button type="button" v-show="accountActive.length < 3" class="btn btn-success" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">
+          + Nueva Cuenta
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nueva cuenta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Seleccione el tipo de cuenta que desea crear:
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" @click="newAccount('SAVING')"
+                  data-bs-dismiss="modal">Cuenta Ahorro</button>
+                <button type="button" class="btn btn-primary" @click="newAccount('CURRENT')">Cuenta Corriente</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <button type="button" @click="newAccount()" v-show="accountActive.length < 3" class="btn btn-success">Create</button> -->
+
+        <h2 class="separar">Tus Prestamos:</h2>
+
+        <div v-if="client.loans != 0">
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Monto</th>
+                <th scope="col">Cuotas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="loan in client.loans">
+                <td>{{loan.id}}</td>
+                <td>{{loan.name}}</td>
+                <td>{{loan.amount}}</td>
+                <td>{{loan.payments}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div v-else>
+          <h4> - Usted no posee prestamos actualmente.. Dirijase a la sucursal mas cercana para iniciar uno o realicelo
+            desde el siguiente boton.</h4>
+        </div>
+
+        <button type="submit" role="link" onclick="window.location='http://localhost:8080/web/loan-application.html'"
+          class="btn btn-success">+ Nuevo Prestamo</button>
+
+        <div class="separar">
+          <p class="glosario">*CANP: Cuenta abierta no primaria</p>
+          <p class="glosario">*CR: Cuenta restringida</p>
+          <p class="glosario">*CPD: Cuenta primaria doméstica</p>
+          <p class="glosario">*CPR: Cuenta restringida primaria</p>
+          <p class="glosario">*CPE: Cuenta primaria exterior</p>
+          <p class="glosario">*CPG: Cuenta primaria global</p>
+          <p class="glosario">*CRCF: Cuenta restringida a extracciones y transferencias entre cuentas relacionadas, en
+          moneda pesos (consumidor final).</p>
+          <p class="glosario">*CRNCF: Cuenta restringida a extracciones y transferencias entre cuentas relacionadas, en
+          moneda pesos (no consumidor final).</p>
+        </div>
+        
+
+        <button type="button" class="btn btn-success separar" role="link" style="background-color: darkorange; margin-bottom: 2rem;" @click="mantenimiento()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-printer" width="32" height="32"
+            viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2" />
+            <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4" />
+            <rect x="7" y="13" width="10" height="8" rx="2" />
+          </svg>
+          Imprimir
+        </button>
+
+        <button type="button" class="btn btn-success separar" role="link" style="background-color: darkorange; margin-bottom: 2rem;" @click="mantenimiento()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="32" height="32"
+            viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+            <polyline points="7 11 12 16 17 11" />
+            <line x1="12" y1="4" x2="12" y2="16" />
+          </svg>
+          Descargar
+        </button>
+
+      </div>
+
+
+    </div>
+
+
+    <footer class="text-white-50 bg-dark">
+      <div class="d-flex justify-content-around">
+        <div>
+          <a class="d-flex justify-content-center linkFooter tituloFooter"
+            href="contactenos.html"><b>Contáctenos</b></a>
+          <p class="d-flex justify-content-center">Trabaja en Online Banking</p>
+          <p class="d-flex justify-content-center">Sobre Online Banking</p>
+        </div>
+
+        <div>
+          <a class="d-flex justify-content-center linkFooter tituloFooter"
+            href="informacion.html"><b>Informacion</b></a>
+          <p class="d-flex justify-content-center">Informacion Legal</p>
+          <p class="d-flex justify-content-center">Politica de privacidad</p>
+          <p class="d-flex justify-content-center">Terminos y condiciones</p>
+        </div>
+
+        <div>
+          <a class="d-flex justify-content-center linkFooter tituloFooter"
+            href="reclamos.html"><b>¿Necesitas ayuda?</b></a>
+          <p class="d-flex justify-content-center">Fui victima de una estafa</p>
+          <p class="d-flex justify-content-center">Iniciar un reclamo</p>
+          <p class="d-flex justify-content-center">Mas ayuda</p>
+        </div>
+      </div>
+
+      <div class="linea"></div>
+
+      <p class="sangria" style="margin-bottom: 1rem;">El nivel de riesgo y la informacion de cada uno de los Fondos de Inversion comercializados por
+        Online Banking, S.A. esta detallado en el Folleto informativo
+        o Documento de Datos Fundamentales para el Inversor (DFI) de cada uno de los Fondos de Inversion, disponible en
+        www.onlinebanking.com
+      </p>
+
+      <p class="sangria">Si en el futuro no deseas recibir mas comunicaciones comerciales por e-mail, escribe a
+        sinpublicidad@onlinebanking.com. Si necesitas contactar con Online Banking
+        no contestes a esta direccion automatica, reenvia tu consulta a ayuda@onlinebanking.com
+      </p>
+
+      <div class="linea"></div>
+
+      <p class="d-flex justify-content-center" style="margin-bottom: 1rem;">Copyright ©️ 2022 - Todos los derechos reservados.</p>
+    </footer>
+
+  </div>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="accounts.js"></script>
+</body>
+
+</html>
