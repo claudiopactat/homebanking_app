@@ -4,6 +4,7 @@ var app = new Vue({
         client: {},
         accounts: [],
         loans: [],
+        accountActive: [],
 
         rolAdmin: false,
 
@@ -22,7 +23,7 @@ var app = new Vue({
         loanAutomotriz: 0,
         loanAdmin: 0,
 
-        montoSolicitado: null,
+        montoSolicitado: 0,
         cantCuotas: null,
 
         montoFinalCuotasPersonal: 0,
@@ -57,7 +58,14 @@ var app = new Vue({
                 this.client = response.data;
                 this.accounts = this.client.account;
 
+                this.accounts.filter(account =>{
+                    if(account.active == true){
+                        return this.accountActive.push(account)
+                    }
+                })
+
                 // ordenamos
+                this.accountActive.sort((a,b) => a.id - b.id);
                 this.accounts.sort((a,b) => a.id - b.id);
                 this.client.loans.sort((a,b) => a.id - b.id);
             })
@@ -123,6 +131,18 @@ var app = new Vue({
             this.montoFinalCuotasAdmin = (this.montoSolicitado * this.loanAdmin / this.cantCuotas).toFixed(2);
         },
 
+        verificarPrestamo(){
+            if(this.cantCuotas == null || this.montoSolicitado <= 0 || this.cuentaDestino == ""){
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Ha ocurrido un error!',
+                    text: 'Verifica que llenaste bien todos los campos.. recuerda que el monto no puede ser cero ni negativo.',
+                })    
+            }else{
+                this.realizarPrestamo();
+            }
+        },
+
         realizarPrestamo(){
             Swal.fire({
                 title: '¿Esta seguro de realizar el prestamo?',
@@ -146,5 +166,13 @@ var app = new Vue({
                 }
             })
         },
+
+        mantenimiento(){
+            Swal.fire({
+                icon: 'warning',
+                title: 'Ha ocurrido un error',
+                text: 'Momentaneamente no funciona esta accion, intentelo mas tarde..',
+            })
+        }
     },
 })

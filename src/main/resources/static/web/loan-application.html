@@ -25,7 +25,7 @@
             </div>
             <div>
                 <button type="submit" role="link" onclick="window.location='/web/index.html'"
-                    @click="signOut()" class="btn btn-danger">Sign out</button>
+                    @click="signOut()" class="btn btn-danger">Cerrar Sesion</button>
             </div>
         </header>
 
@@ -117,6 +117,9 @@
 
                 <form class="formLoans">
                     <div>
+                      <label for="" style="font-size: 1.5rem;"><b>Selecciona una opcion de prestamo:</b></label>
+                    </div>
+                    <div>
                         <label for="transferencia" class="form-label">Tipo de Prestamo: </label>
 
                         <input class="form-check-input" @click="prestamoPersonal()" type="radio" name="cardType"
@@ -133,8 +136,6 @@
 
                         <input v-if="rolAdmin" class="form-check-input" @click="prestamoAdmin()" type="radio" name="cardType" id="transferencia4" v-model="nombrePrestamo" value="Admin">
                         <label v-if="rolAdmin" class="form-check-label" for="inlineRadio4">Prestamo Admin</label>
-                        
-                        
                     </div>
 
                     <div>
@@ -147,7 +148,7 @@
                     <div v-show="personal" style="margin-top: 1rem;">
                         <label for="cuentaHasta" class="form-label">Selecciona las cuotas:</label>
                         <input class="form-control" list="pagosPersonal" v-model="cantCuotas"
-                            placeholder="Seleccione cantidad de cuentas...">
+                            placeholder="Seleccione cantidad de cuotas..." required>
                         <datalist id="pagosPersonal">
                             <option v-for="cuota in cuotasPersonal">{{cuota}}</option>
                         </datalist>
@@ -156,7 +157,7 @@
                     <div v-show="hipotecario" style="margin-top: 1rem;">
                         <label for="cuentaHasta" class="form-label">Selecciona las cuotas:</label>
                         <input class="form-control" list="pagosHipotecarios" v-model="cantCuotas"
-                            placeholder="Seleccione cantidad de cuentas...">
+                            placeholder="Seleccione cantidad de cuotas...">
                         <datalist id="pagosHipotecarios">
                             <option v-for="cuota in cuotasHipotecario">{{cuota}}</option>
                         </datalist>
@@ -165,7 +166,7 @@
                     <div v-if="automotriz" style="margin-top: 1rem;">
                         <label for="cuentaHasta" class="form-label">Selecciona las cuotas:</label>
                         <input class="form-control" list="pagosAutomotriz" v-model="cantCuotas"
-                            placeholder="Seleccione cantidad de cuentas...">
+                            placeholder="Seleccione cantidad de cuotas...">
                         <datalist id="pagosAutomotriz">
                             <option v-for="cuota in cuotasAutomotriz">{{cuota}}</option>
                         </datalist>
@@ -174,14 +175,14 @@
                     <div v-if="admin" style="margin-top: 1rem;">
                         <label for="cuentaHasta" class="form-label">Selecciona las cuotas:</label>
                         <input class="form-control" list="pagosAdmin" v-model="cantCuotas"
-                            placeholder="Seleccione cantidad de cuentas...">
+                            placeholder="Seleccione cantidad de cuotas...">
                         <datalist id="pagosAdmin">
                             <option v-for="cuota in cuotasAdmin">{{cuota}}</option>
                         </datalist>
                     </div>
 
                     <div v-show="cantCuotas" style="margin-top: 1rem;">
-                        <label for="montoSolicitar" class="form-label">Monto a solicitar:</label>
+                        <label for="montoSolicitar" class="form-label">Monto a solicitar en pesos:</label>
                         <input v-if="personal" type="number" class="form-control" id="montoSolicitar"
                             aria-describedby="emailHelp" v-model="montoSolicitado"
                             placeholder="Monto maximo de 100.000">
@@ -226,8 +227,8 @@
                             {{montoFinalCuotasAdmin}}</label>
                     </div>
 
-                    <button type="button" @click="realizarPrestamo()" class="btn btn-primary"
-                        style="margin-top: 1rem;">Apply</button>
+                    <button type="button" @click="verificarPrestamo()" class="btn btn-primary"
+                        style="margin-top: 1rem;">Solicitar Prestamo</button>
 
                 </form>
             </div>

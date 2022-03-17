@@ -25,7 +25,7 @@
             </div>
             <div>
                 <button type="submit" role="link" onclick="window.location='/web/index.html'"
-                    @click="signOut()" class="btn btn-danger">Sign out</button>
+                    @click="signOut()" class="btn btn-danger">Cerrar Sesion</button>
             </div>
         </header>
 
@@ -117,6 +117,9 @@
             <div class="derecha">
 
                 <form>
+                  <div>
+                    <label for="" class="separar" style="font-size: 2rem; padding-bottom: 1rem;"><b>Selecciona una opcion de transferencia:</b></label>
+                  </div>
                     <div>
                         <label for="transferencia" class="form-label">Tipo de transferencia: </label>
 
@@ -131,17 +134,17 @@
 
                     <div v-show="cuentaPropia">
                         <label for="cuentaDesde" class="form-label">Transferir desde:</label>
-                        <input class="form-control" list="datalistOptions" id="cuentaDesde"
-                            placeholder="Seleccione cuenta de origen..." v-model="accountOrigin">
-                        <datalist id="datalistOptions">
-                            <option v-for="account in accounts" :value=account.number>{{account.number}}</option>
+                        <input class="form-control" list="datalistOptions1" v-model="accountOrigin"
+                            placeholder="Seleccione cuenta de origen..." required>
+                        <datalist id="datalistOptions1">
+                            <option v-for="account in accounts">{{account.number}}</option>
                         </datalist>
 
                         <label for="cuentaHasta" class="form-label">Transferir a:</label>
-                        <input class="form-control" list="datalistOptions" id="cuentaHasta"
-                            placeholder="Seleccione cuenta de destino..." v-model="accountDestiny">
-                        <datalist id="datalistOptions">
-                            <option v-for="account in accounts" :value=account.number>{{account.number}}</option>
+                        <input class="form-control" list="datalistOptions2" v-model="accountDestiny"
+                            placeholder="Seleccione cuenta de destino..." required>
+                        <datalist id="datalistOptions2">
+                            <option v-for="account in accounts">{{account.number}}</option>
                         </datalist>
                         <div id="emailHelp" class="form-text">La cuenta de destino no puede ser la misma que la de
                             origen.</div>
@@ -154,7 +157,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="montoTransferir" class="form-label">Monto a transferir:</label>
+                        <label for="montoTransferir" class="form-label">Monto a transferir en pesos:</label>
 
                         <input type="number" class="form-control" id="montoTransferir" aria-describedby="emailHelp"
                             v-model="amount">
@@ -167,7 +170,7 @@
                         <input type="text" class="form-control" id="exampleInputPassword1" v-model="description">
                     </div>
 
-                    <button type="button" @click="realizarTransferencia()" class="btn btn-primary">Transfer</button>
+                    <button type="button" @click="verificarTransferencia()" class="btn btn-primary">Realizar Transferencia</button>
 
                 </form>
             </div>

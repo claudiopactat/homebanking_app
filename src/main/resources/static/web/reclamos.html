@@ -23,7 +23,7 @@
             </div>
             <div>
                 <button type="submit" role="link" onclick="window.location='/web/index.html'"
-                    @click="signOut()" class="btn btn-danger">Sign out</button>
+                    @click="signOut()" class="btn btn-danger">Cerrar Sesion</button>
             </div>
         </header>
 
@@ -113,7 +113,7 @@
             <div class="derecha">
                 <img class="imagenContactanos" src="img/cantactanos.jpg" alt="">
                 <h2>Consultas y Reclamos</h2>
-                <form>
+                <form onsubmit="return false">
                     <div class="mb-3">
                       <label for="documento" class="form-label">Numero de documento:</label>
                       <input type="number" class="form-control" v-model="documento" id="documento" placeholder="38896703" required>
@@ -127,7 +127,7 @@
                         <label for="reclamo" class="form-label">Consulta o reclamo:</label>
                         <textarea class="form-control" v-model="reclamo" id="reclamo" rows="8" placeholder="Buenos dias! Quisiera realizar la siguiente consulta.." required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" @click="enviarReclamo()">Enviar</button>
+                    <button type="reset" class="btn btn-primary" @click="enviarReclamo()">Enviar</button>
                 </form>
             
             </div>

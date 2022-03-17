@@ -1,10 +1,6 @@
 var app = new Vue({
     el: '#app',
     data: {
-        documento: null,
-        email: "",
-        reclamo: "",
-
         accounts: [],
         accountActive: [],
     },
@@ -32,19 +28,6 @@ var app = new Vue({
                 this.accountActive.sort((a,b) => a.id - b.id);
                 this.accounts.sort((a,b) => a.id - b.id);
             })
-        },
-        
-        enviarReclamo(){
-            if(this.documento != null && this.email.includes("@") && this.reclamo != ""){
-                console.log("asdsd")
-
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Correcto!',
-                    text: 'Su reclamo fue enviado exitosamente!!',
-                    showConfirmButton: true,
-                });
-            }
         },
 
         mantenimiento(){

@@ -5,6 +5,10 @@ var app = new Vue({
         accounts: [],
         cards: [],
         cardsInactive: [],
+        accountActive: [],
+        cardsCredit: [],
+        cardsDebit: [],
+
         check: ["CREDIT","DEBIT"],
         date: new Date().toISOString(),
     },
@@ -25,16 +29,39 @@ var app = new Vue({
                 console.log(this.client.cards)
                 this.accounts = this.client.account;
         
+                // filtramos todas las tarjetas activas
                 this.client.cards.filter(card =>{
                     if (this.check.includes(card.type) && card.active == true) {
                         return this.cards.push(card)
                     }
                 })
 
+                // filtramos las cuentas activas
+                this.accounts.filter(account =>{
+                    if(account.active == true){
+                        return this.accountActive.push(account)
+                    }
+                })
+
+                // filtramos las tarjetas activas separando Credito de Debito
+                this.client.cards.filter(card =>{
+                    if (card.type == 'CREDIT' && card.active == true) {
+                        return this.cardsCredit.push(card)
+                    }
+                })
+                this.client.cards.filter(card =>{
+                    if (card.type == 'DEBIT' && card.active == true) {
+                        return this.cardsDebit.push(card)
+                    }
+                })
+
                 // ordenamos
+                this.accountActive.sort((a,b) => a.id - b.id);
                 this.accounts.sort((a,b) => a.id - b.id);
                 this.client.loans.sort((a,b) => a.id - b.id);
                 this.client.cards.sort((a,b) => a.id - b.id);
+                this.cardsCredit.sort((a,b) => a.id - b.id);
+                this.cardsDebit.sort((a,b) => a.id - b.id);
             })
         },
 
@@ -62,7 +89,7 @@ var app = new Vue({
                 Swal.fire({
                     icon: 'success',
                     title: 'Correcto',
-                    text: 'Sesion cerrada correctamente!!',
+                    text: 'Tarjeta eliminada correctamente!!',
                 }),
             )
             
@@ -73,6 +100,14 @@ var app = new Vue({
             .then(response => 
                 console.log('signed out!!!')
             )
+        },
+
+        mantenimiento(){
+            Swal.fire({
+                icon: 'warning',
+                title: 'Ha ocurrido un error',
+                text: 'Momentaneamente no funciona esta accion, intentelo mas tarde..',
+            })
         }
     }
 })

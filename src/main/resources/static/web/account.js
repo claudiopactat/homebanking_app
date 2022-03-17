@@ -4,6 +4,7 @@ var app = new Vue({
         account: {},
         accounts: [],
         transactions: [],
+        accountActive: [],
     },
 
     created(){
@@ -27,9 +28,16 @@ var app = new Vue({
                     return account.id == myId;
                 }) 
 
+                this.accounts.filter(account =>{
+                    if(account.active == true){
+                        return this.accountActive.push(account)
+                    }
+                })
+
                 this.transactions = this.account.transactions;
             
                 // ordenamos 
+                this.accountActive.sort((a,b) => a.id - b.id);
                 this.transactions.sort((a,b) => a.id - b.id);
                 this.accounts.sort((a,b) => a.id - b.id);
                 this.client.loans.sort((a,b) => a.id - b.id);
@@ -51,5 +59,13 @@ var app = new Vue({
                 console.log('signed out!!!')
             )
         },
+
+        mantenimiento(){
+            Swal.fire({
+                icon: 'warning',
+                title: 'Ha ocurrido un error',
+                text: 'Momentaneamente no funciona esta accion, intentelo mas tarde..',
+            })
+        }
     }
 })

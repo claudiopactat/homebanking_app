@@ -3,6 +3,7 @@ var app = new Vue({
     data: {
         client: {},
         accounts: [],
+        accountActive: [],
 
         amount: 0,
         accountOrigin: "",
@@ -25,8 +26,15 @@ var app = new Vue({
             .then(response => {
                 this.client = response.data;
                 this.accounts = this.client.account;
+
+                this.accounts.filter(account =>{
+                    if(account.active == true){
+                        return this.accountActive.push(account)
+                    }
+                })
             
                 // ordenamos
+                this.accountActive.sort((a,b) => a.id - b.id);
                 this.accounts.sort((a,b) => a.id - b.id);
                 this.client.loans.sort((a,b) => a.id - b.id);
             })
@@ -40,6 +48,18 @@ var app = new Vue({
         formCuentaTercero(){
             this.cuentaTercero = true;
             this.cuentaPropia = false;
+        },
+
+        verificarTransferencia(){
+            if(this.accountOrigin == this.accountDestiny || this. amount <= 0){
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Ha ocurrido un error!',
+                    text: 'Verifica que llenaste bien todos los campos.. recuerda que la cuenta de destino no puede ser igual a la de origen y que el monto no puede ser cero ni negativo.',
+                })    
+            }else{
+                this.realizarTransferencia();
+            }
         },
 
         realizarTransferencia(){

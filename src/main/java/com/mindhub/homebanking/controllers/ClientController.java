@@ -33,7 +33,7 @@ public class ClientController {
 
     @GetMapping("/clients")
     public List<ClientDTO> getClient(){
-        return clientRepository.findAll().stream().map(ClientDTO::new).collect(toList());
+        return clientRepository.findAll().stream().map(client -> new ClientDTO(client)).collect(toList());
     }
 
     /*

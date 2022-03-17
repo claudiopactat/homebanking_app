@@ -26,7 +26,7 @@
       </div>
       <div>
         <button type="submit" role="link" onclick="window.location='/web/index.html'"
-          @click="signOut()" class="btn btn-danger">Sign out</button>
+          @click="signOut()" class="btn btn-danger">Cerrar Sesion</button>
       </div>
     </header>
 
@@ -134,12 +134,11 @@
           </div>
           <div class="form-check-inline ButtonDiv">
             <button type="submit" class="btn btn-success" v-if="cards.length < 6"><a href="create-cards.html"
-                style="color: white; text-decoration: none;">Create</a></button>
+                style="color: white; text-decoration: none;">+ Nueva Tarjeta</a></button>
             <div class="buttonDisabled" v-else>
               <button type="submit" class="btn btn-success" disabled><a href=""
-                  style="color: white; text-decoration: none;">Create</a></button>
-              <p class="animate__animated animate__fadeInDown animate__backOutUp">No se puede tener mas de 3 tarjetas de
-                credito ni mas de 3 tarjetas de debito..</p>
+                  style="color: white; text-decoration: none;">+ Nueva Tarjeta</a></button>
+              <p class="animate__animated animate__fadeInDown animate__backOutUp">No puede tener mas de tres tarjetas por tipo..</p>
             </div>
           </div>
         </div>
@@ -149,11 +148,11 @@
 
         <div v-if="check.includes('CREDIT')">
 
-          <h2>Tus Tarjetas de Credito:</h2>
+          <h2 class="separar">Tus Tarjetas de Credito:</h2>
 
-          <div class="container">
+          <div class="container separarTarjetas">
             <div class="row row-cols-3">
-              <div class="card col" v-for="card in cards" v-if="card.type == 'CREDIT' && check.includes('CREDIT')">
+              <div class="card col" v-for="card in cardsCredit" v-if="card.type == 'CREDIT' && check.includes('CREDIT')">
                 <div v-if="card.color == 'TITANIUM'">
                   <!-- parte frontal de la tarjeta -->
                   <div class="card__front card__black"
@@ -316,21 +315,30 @@
                 </div>
 
                 <button type="submit" @click="eliminaTarjeta(card.id)"
-                  class="btn btn-success eliminaTarjeta">Delete</button>
+                  class="btn btn-success eliminaTarjeta">Eliminar Tarjeta</button>
 
               </div>
+
+              <!-- <div v-if="cardsCredit == 0">
+                <h4> - Usted no posee tarjetas de Credito activas actualmente.. Dirijase a la sucursal mas cercana para soliticar una o creela desde el boton de arriba.</h4>
+              </div> -->
+              
             </div>
           </div>
         </div>
 
+        <div class="sangria" v-if="cardsCredit == 0">
+          <h4> - Usted no posee tarjetas de Credito activas actualmente.. Dirijase a la sucursal mas cercana para soliticar una o creela desde el boton situado en el panel de filtros.</h4>
+        </div>
+
         <div v-if="check.includes('DEBIT')">
 
-          <h2>Tus Tarjetas de Debito:</h2>
+          <h2 class="separar">Tus Tarjetas de Debito:</h2>
 
-          <div class="container">
+          <div class="container separarTarjetas">
 
             <div class="row row-cols-3">
-              <div class="card col" v-for="card in cards" v-if="card.type == 'DEBIT' && check.includes('DEBIT')">
+              <div class="card col" v-for="card in cardsDebit" v-if="card.type == 'DEBIT' && check.includes('DEBIT')">
                 <div v-if="card.color == 'TITANIUM'">
                   <!-- parte frontal de la tarjeta -->
                   <div class="card__front card__black"
@@ -485,12 +493,17 @@
                 </div>
 
                 <button type="submit" @click="eliminaTarjeta(card.id)"
-                  class="btn btn-success eliminaTarjeta">Delete</button>
+                  class="btn btn-success eliminaTarjeta">Eliminar Tarjeta</button>
 
               </div>
             </div>
           </div>
         </div>
+
+        <div class="sangria" v-if="cardsDebit == 0">
+          <h4> - Usted no posee tarjetas de Debito activas actualmente.. Dirijase a la sucursal mas cercana para soliticar una o creela desde el boton situado en el panel de filtros.</h4>
+        </div>
+
       </div>
     </div>
 
